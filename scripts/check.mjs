@@ -5,7 +5,7 @@ const root = path.resolve(import.meta.dirname, '..');
 execFileSync(process.execPath, [path.join(root, 'scripts', 'package.mjs')], { stdio: 'inherit' });
 const packageDir = path.join(root, 'build', 'tutti-agent', 'package');
 const manifest = JSON.parse(await readFile(path.join(packageDir, 'tutti.agent.json'), 'utf8'));
-if (manifest.schemaVersion !== 'tutti.agent.manifest.v1' || manifest.agentKey !== 'qwen' || manifest.version !== '1.0.0') throw new Error('invalid manifest identity');
+if (manifest.schemaVersion !== 'tutti.agent.manifest.v2' || manifest.agentKey !== 'qwen' || manifest.version !== '1.0.0') throw new Error('invalid manifest identity');
 const expectedInstall = ['install', '--prefix', '${installRoot}', '@qwen-code/qwen-code@0.19.11'];
 const expectedLaunch = ['--acp'];
 if (manifest.runtime?.kind !== 'standard-acp') throw new Error('Qwen runtime must use standard-acp');
