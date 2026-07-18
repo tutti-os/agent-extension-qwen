@@ -150,12 +150,13 @@ trusted source.
 
 ## Artwork and trademarks
 
-`extension/assets/icon.svg` and `hero-image.svg` are neutral,
-Tutti-maintained artwork created for this integration and distributed under
-this repository's Apache-2.0 license. They do not copy Qwen logos or claim to
-be official Qwen artwork because redistribution permission for upstream brand
-assets was not established. “Qwen Code” identifies the compatible upstream
-runtime; all related trademarks belong to their respective owners.
+`extension/assets/icon.svg` is the official Qwen Code desktop brand icon from
+the fixed upstream source. `sidebar-icon.svg` places the same mark in
+rail-specific rounded tile chrome. `hero-image.jpg` is original Tutti-maintained
+record-sleeve artwork inspired by Qwen's visual palette without altering the
+official mark. Both assets are local and passive. “Qwen Code” identifies the
+compatible upstream runtime; all related trademarks belong to their respective
+owners.
 
 The fixed-source and community-reference review is recorded in
 [docs/reference-review.md](docs/reference-review.md).

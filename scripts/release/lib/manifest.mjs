@@ -75,7 +75,6 @@ export async function validatePackage(packageDir, expectedAgentKey) {
   await validateDeclaredPackageEntries(packageDir, declaredFiles);
   return manifest;
 }
-
 export function validateManifest(manifest, expectedAgentKey) {
   if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) {
     throw new Error("agent manifest must be an object");
@@ -94,6 +93,7 @@ export function validateManifest(manifest, expectedAgentKey) {
       "name",
       "description",
       "icon",
+      "sidebarIcon",
       "heroImage",
       "runtime",
       "profiles",
@@ -116,6 +116,9 @@ export function validateManifest(manifest, expectedAgentKey) {
     requireString(manifest.description, "manifest description");
   }
   validateIcon(manifest.icon);
+  if (manifest.sidebarIcon !== undefined) {
+    validateSidebarIcon(manifest.sidebarIcon);
+  }
   if (manifest.heroImage !== undefined) {
     validateHeroImage(manifest.heroImage);
   }
@@ -143,6 +146,14 @@ function validateHeroImage(heroImage) {
   }
   rejectUnknownKeys(heroImage, ["type", "src"], "manifest heroImage");
   requireRelativePath(heroImage.src, "manifest heroImage.src");
+}
+
+function validateSidebarIcon(sidebarIcon) {
+  if (!sidebarIcon || typeof sidebarIcon !== "object" || sidebarIcon.type !== "asset") {
+    throw new Error("manifest sidebarIcon.type must be asset");
+  }
+  rejectUnknownKeys(sidebarIcon, ["type", "src"], "manifest sidebarIcon");
+  requireRelativePath(sidebarIcon.src, "manifest sidebarIcon.src");
 }
 
 function validateRuntime(runtime) {
@@ -300,6 +311,7 @@ function validateLocalizationInfo(localizationInfo) {
 async function validateReferencedFiles(packageDir, manifest) {
   const references = [
     [manifest.icon.src, null],
+    ...(manifest.sidebarIcon ? [[manifest.sidebarIcon.src, null]] : []),
     ...(manifest.heroImage ? [[manifest.heroImage.src, null]] : []),
     [manifest.localizationInfo.defaultFile, null],
     ...(manifest.localizationInfo.additionalLocales ?? []).map((entry) => [
@@ -322,7 +334,7 @@ async function validateReferencedFiles(packageDir, manifest) {
       );
     }
     declaredFiles.add(filePath);
-    if (relativePath === manifest.icon.src || relativePath === manifest.heroImage?.src) {
+    if (relativePath === manifest.icon.src || relativePath === manifest.sidebarIcon?.src || relativePath === manifest.heroImage?.src) {
       await validatePresentationAsset(filePath, relativePath, info);
     }
     if (expectedSchema) {

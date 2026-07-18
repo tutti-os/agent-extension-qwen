@@ -13,6 +13,9 @@ community registries.
   [`ApprovalMode` IDs](https://github.com/QwenLM/qwen-code/blob/401170d4888914fb50c1640a1256239931c9b009/packages/core/src/config/approval-mode.ts#L7-L15),
   [permission semantics](https://github.com/QwenLM/qwen-code/blob/401170d4888914fb50c1640a1256239931c9b009/docs/users/features/approval-mode.md#L7-L17),
   and [Skill roots](https://github.com/QwenLM/qwen-code/blob/401170d4888914fb50c1640a1256239931c9b009/docs/users/features/skills.md#L43-L69).
+- The packaged icon comes from the official
+  [`QwenLM/qwen-code` desktop brand asset at commit `053f822`](https://github.com/QwenLM/qwen-code/blob/053f82275b645aeccdf4f1fb651ca40249d319b2/packages/desktop/apps/electron/resources/brands/qwen-code/icon.svg).
+  The record-sleeve hero remains original Tutti-maintained artwork.
 - The official [authentication guide](https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/)
   and [settings guide](https://qwenlm.github.io/qwen-code-docs/en/users/configuration/settings/)
   establish that provider selection belongs to interactive `/auth` or

@@ -436,6 +436,7 @@ def validate(root: Path) -> None:
             "name",
             "description",
             "icon",
+            "sidebarIcon",
             "heroImage",
             "runtime",
             "profiles",
@@ -461,6 +462,12 @@ def validate(root: Path) -> None:
     declared_files.add(
         validate_presentation_asset(root, manifest.get("icon"), "icon").resolve()
     )
+    if manifest.get("sidebarIcon") is not None:
+        declared_files.add(
+            validate_presentation_asset(
+                root, manifest.get("sidebarIcon"), "sidebarIcon"
+            ).resolve()
+        )
     declared_files.add(
         validate_presentation_asset(
             root, manifest.get("heroImage"), "heroImage"
