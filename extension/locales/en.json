@@ -1,0 +1,7 @@
+{
+  "agent.name": "Qwen Code",
+  "agent.description": "Qwen Code through the standard Agent Client Protocol",
+  "runtime.install.title": "Install the managed Qwen Code runtime",
+  "runtime.install.description": "Installs the pinned runtime in Tutti's target-scoped managed directory without changing your project.",
+  "runtime.authRequired": "Choose a provider with interactive /auth or security.auth.selectedType in user settings, then provide its credentials through settings or the corresponding environment variables before starting an ACP session."
+}
