@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="48" fill="url(#bg)"/>
+  <g fill="none" stroke="#a5b4fc" stroke-width="24" stroke-linecap="round">
+    <path d="M280 315c0-110 90-200 200-200s200 90 200 200-90 200-200 200"/>
+    <path d="M480 515h-90"/>
+  </g>
+  <circle cx="480" cy="315" r="86" fill="#eef2ff"/>
+  <path d="M438 316h84M480 274v84" stroke="#4338ca" stroke-width="20" stroke-linecap="round"/>
+  <text x="750" y="295" fill="#fff" font-family="system-ui, sans-serif" font-size="82" font-weight="700">Qwen Code</text>
+  <text x="754" y="375" fill="#c7d2fe" font-family="system-ui, sans-serif" font-size="34">Standard ACP for Tutti</text>
+</svg>
