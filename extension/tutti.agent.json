@@ -1,16 +1,16 @@
 {
-  "schemaVersion": "tutti.agent.manifest.v1",
+  "schemaVersion": "tutti.agent.manifest.v2",
   "agentKey": "qwen",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "name": "Qwen Code",
   "description": "Qwen Code through the standard Agent Client Protocol",
   "icon": {
     "type": "asset",
     "src": "assets/icon.svg"
   },
-  "sidebarIcon": {
+  "maskIcon": {
     "type": "asset",
-    "src": "assets/sidebar-icon.svg"
+    "src": "assets/mask-icon.svg"
   },
   "heroImage": {
     "type": "asset",

@@ -8,7 +8,7 @@ import {
   requireString
 } from "./format.mjs";
 
-export const manifestSchemaVersion = "tutti.agent.manifest.v1";
+export const manifestSchemaVersion = "tutti.agent.manifest.v2";
 export const profileSchemas = Object.freeze({
   discovery: "tutti.agent.discovery.v1",
   tools: "tutti.agent.tools.v1",
@@ -93,7 +93,7 @@ export function validateManifest(manifest, expectedAgentKey) {
       "name",
       "description",
       "icon",
-      "sidebarIcon",
+      "maskIcon",
       "heroImage",
       "runtime",
       "profiles",
@@ -116,8 +116,8 @@ export function validateManifest(manifest, expectedAgentKey) {
     requireString(manifest.description, "manifest description");
   }
   validateIcon(manifest.icon);
-  if (manifest.sidebarIcon !== undefined) {
-    validateSidebarIcon(manifest.sidebarIcon);
+  if (manifest.maskIcon !== undefined) {
+    validateMaskIcon(manifest.maskIcon);
   }
   if (manifest.heroImage !== undefined) {
     validateHeroImage(manifest.heroImage);
@@ -148,12 +148,12 @@ function validateHeroImage(heroImage) {
   requireRelativePath(heroImage.src, "manifest heroImage.src");
 }
 
-function validateSidebarIcon(sidebarIcon) {
-  if (!sidebarIcon || typeof sidebarIcon !== "object" || sidebarIcon.type !== "asset") {
-    throw new Error("manifest sidebarIcon.type must be asset");
+function validateMaskIcon(maskIcon) {
+  if (!maskIcon || typeof maskIcon !== "object" || maskIcon.type !== "asset") {
+    throw new Error("manifest maskIcon.type must be asset");
   }
-  rejectUnknownKeys(sidebarIcon, ["type", "src"], "manifest sidebarIcon");
-  requireRelativePath(sidebarIcon.src, "manifest sidebarIcon.src");
+  rejectUnknownKeys(maskIcon, ["type", "src"], "manifest maskIcon");
+  requireRelativePath(maskIcon.src, "manifest maskIcon.src");
 }
 
 function validateRuntime(runtime) {
@@ -311,7 +311,7 @@ function validateLocalizationInfo(localizationInfo) {
 async function validateReferencedFiles(packageDir, manifest) {
   const references = [
     [manifest.icon.src, null],
-    ...(manifest.sidebarIcon ? [[manifest.sidebarIcon.src, null]] : []),
+    ...(manifest.maskIcon ? [[manifest.maskIcon.src, null]] : []),
     ...(manifest.heroImage ? [[manifest.heroImage.src, null]] : []),
     [manifest.localizationInfo.defaultFile, null],
     ...(manifest.localizationInfo.additionalLocales ?? []).map((entry) => [
@@ -334,7 +334,7 @@ async function validateReferencedFiles(packageDir, manifest) {
       );
     }
     declaredFiles.add(filePath);
-    if (relativePath === manifest.icon.src || relativePath === manifest.sidebarIcon?.src || relativePath === manifest.heroImage?.src) {
+    if (relativePath === manifest.icon.src || relativePath === manifest.maskIcon?.src || relativePath === manifest.heroImage?.src) {
       await validatePresentationAsset(filePath, relativePath, info);
     }
     if (expectedSchema) {

@@ -150,10 +150,10 @@ trusted source.
 
 ## Artwork and trademarks
 
-`extension/assets/icon.svg` is the transparent conversation-row mask glyph
-from the official Qwen Code desktop brand icon. `sidebar-icon.svg` places the
-same mark in the colored shared identity used by the Provider Rail, conversation
-headers, Message Center, and mentions. `hero-image.jpg` is original Tutti-maintained
+`extension/assets/icon.svg` places the official Qwen Code desktop brand icon in
+the colored shared identity used by the Provider Rail, conversation headers,
+Message Center, and mentions. `mask-icon.svg` is the transparent conversation-row
+mask glyph. `hero-image.jpg` is original Tutti-maintained
 record-sleeve artwork inspired by Qwen's visual palette without altering the
 official mark. Both assets are local and passive. “Qwen Code” identifies the
 compatible upstream runtime; all related trademarks belong to their respective

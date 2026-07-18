@@ -370,7 +370,7 @@ async function writeFixture(packageDir) {
     path.join(packageDir, "tutti.agent.json"),
     `${JSON.stringify(
       {
-        schemaVersion: "tutti.agent.manifest.v1",
+        schemaVersion: "tutti.agent.manifest.v2",
         agentKey: "qwen",
         version: "1.0.0",
         name: "Qwen Code",
